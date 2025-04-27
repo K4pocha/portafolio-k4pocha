@@ -69,42 +69,76 @@ const Projects = () => {
     // ... puedes añadir más si decides incluir otros proyectos ...
   ];
 
-  // --- El resto del componente Projects.tsx (funciones open/closeModal, return con el mapeo y el modal) ---
-  // --- NO necesita cambios en su lógica, solo en el array projectsData ---
-
   const openModal = (project: ProjectType) => { setSelectedProject(project); document.body.style.overflow = 'hidden'; };
   const closeModal = () => { setSelectedProject(null); document.body.style.overflow = 'auto'; };
 
   return (
-     <motion.section id="projects" /* ...etc... */ >
-        {/* ... Título ... */}
-        <motion.div className="max-w-6xl mx-auto grid ..." /* ...etc... */ >
-            {projectsData.map((project) => (
-                // La tarjeta se renderiza igual, usando los datos del proyecto actual
-                <motion.div key={project.id} /* ...etc... */ onClick={() => openModal(project)}>
-                    <motion.img src={project.imageUrl} /* ...etc... */ />
-                    <div className="p-5 flex flex-col flex-grow">
-                        <h3 className="text-xl ...">{project.name}</h3>
-                        <p className="text-sm ...">{project.shortDescription}</p>
-                        <div className="flex flex-wrap gap-1.5 mt-auto pt-2 ...">
-                            {/* Muestra algunas tecnologías */}
-                            {project.technologies.slice(0, 3).map(tech => (
-                                <span key={tech} className="bg-primary/10 ...">{tech}</span>
-                            ))}
-                            {project.technologies.length > 3 && <span className="text-[11px] ...">...</span>}
-                        </div>
-                    </div>
-                </motion.div>
-            ))}
-        </motion.div>
+    <motion.section
+      id="projects"
+      className="py-24 px-4 bg-primary/5 min-h-screen" // Fondo sutil, asegura altura
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      {/* Título con icono */}
+      <h2 className="text-3xl md:text-4xl font-bold font-mono mb-16 text-center flex items-center justify-center gap-3"> {/* Más margen inferior */}
+        <FolderGit2 size={32} className="text-primary" />
+        Proyectos
+      </h2>
 
-        <AnimatePresence>
-            {selectedProject && (
-                // El modal recibe el proyecto seleccionado y muestra sus detalles
-                <ProjectModal project={selectedProject} onClose={closeModal} />
-            )}
-        </AnimatePresence>
-     </motion.section>
+      <motion.div
+        className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10" // Más gap
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
+        {projectsData.map((project) => (
+          // Tarjeta de proyecto animada y con hover
+          <motion.div
+            key={project.id}
+            className="border border-foreground/10 p-0 rounded-lg bg-background shadow-md hover:shadow-xl cursor-pointer overflow-hidden flex flex-col" // Quitamos padding inicial, usamos flex-col
+            variants={itemVariants}
+            whileHover={{ y: -8, scale: 1.02, boxShadow: "0 10px 15px -3px rgba(var(--primary-hsl-values, 0 0 0) / 0.1), 0 4px 6px -2px rgba(var(--primary-hsl-values, 0 0 0) / 0.05)" }} // Elevación y sombra más pronunciada
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            onClick={() => openModal(project)}
+            layoutId={`card-container-${project.id}`} // Opcional para animación compartida
+          >
+            {/* Imagen ocupa todo el ancho */}
+            <motion.img
+              src={project.imageUrl}
+              alt={`Imagen de ${project.name}`}
+              className="w-full h-48 object-cover" // Altura fija para consistencia
+              layoutId={`card-image-${project.id}`}
+            />
+            {/* Contenido con padding */}
+            <div className="p-5 flex flex-col flex-grow">
+              <h3 className="text-xl font-semibold font-mono mb-2">{project.name}</h3>
+              <p className="text-sm text-foreground/70 mb-4 flex-grow">{project.shortDescription}</p> {/* flex-grow para empujar tags abajo */}
+              {/* Tags de tecnología (opcional en tarjeta) */}
+              <div className="flex flex-wrap gap-1.5 mt-auto pt-2 border-t border-foreground/5">
+                 {project.technologies.slice(0, 3).map(tech => ( // Mostrar solo 3-4
+                     <span key={tech} className="bg-primary/10 text-primary text-[11px] font-semibold px-2 py-0.5 rounded-full font-mono">
+                         {tech}
+                     </span>
+                 ))}
+                 {project.technologies.length > 3 && (
+                    <span className="text-[11px] text-foreground/50">...</span>
+                 )}
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Modal (sin cambios en su renderizado) */}
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal project={selectedProject} onClose={closeModal} />
+        )}
+      </AnimatePresence>
+    </motion.section>
   );
 };
 
