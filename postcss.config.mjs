@@ -1,5 +1,9 @@
+// postcss.config.mjs
 const config = {
-  plugins: ["@tailwindcss/postcss"],
+  plugins: {
+    '@tailwindcss/postcss': {}, // <-- ¡Usa el nombre correcto del paquete!
+    autoprefixer: {},
+  },
 };
 
 export default config;
