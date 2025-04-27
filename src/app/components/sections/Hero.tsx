@@ -3,6 +3,8 @@
 import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import type { Metadata } from 'next'
+import { motion } from 'framer-motion'; // Importa motion
+import { ChevronDown } from 'lucide-react'; // Importa un icono de flecha
 
 export const metadata: Metadata = {
   title: 'Nicolás Oñate - Desarrollador Fullstack | Portafolio',
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 
 const Hero = () => {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center text-center px-4">
+    <section id="hero" className="min-h-screen flex items-center justify-center text-center px-4 relative">
       <div>
         {/* Usa la fuente mono y ajusta tamaños/colores con Tailwind */}
         <div className="font-mono text-lg md:text-xl lg:text-2xl text-primary mb-4">
@@ -48,6 +50,20 @@ const Hero = () => {
          <p className="mt-6 text-lg text-foreground/80"> {/* Texto con opacidad */}
          </p>
       </div>
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2" // Posición abajo al centro
+        // Animación de "bote"
+        animate={{ y: [0, 8, 0] }} // Mueve 8px hacia abajo y vuelve
+        transition={{
+          duration: 1.5, // Duración del ciclo
+          repeat: Infinity, // Repite infinitamente
+          repeatType: "loop", // Tipo de repetición
+          ease: "easeInOut",
+        }}
+      >
+        <ChevronDown size={28} className="text-foreground/50" /> {/* Icono con opacidad */}
+      </motion.div>
+      {/* 👆 Fin del Indicador de Scroll 👆 */}
     </section>
   );
 };
