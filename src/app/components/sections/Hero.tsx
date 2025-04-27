@@ -46,7 +46,6 @@ const Hero = () => {
 
          {/* Puedes añadir un subtítulo o botones debajo */}
          <p className="mt-6 text-lg text-foreground/80"> {/* Texto con opacidad */}
-            Bienvenido a mi espacio digital.
          </p>
       </div>
     </section>
