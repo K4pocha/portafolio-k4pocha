@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa';
 import {
   SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss,
-  SiExpress, SiMongodb, SiPrisma, SiPostgresql // Si usas Postgres en vez de SQL genérico
+  SiExpress, SiMongodb, SiPrisma // Si usas Postgres en vez de SQL genérico
 } from 'react-icons/si';
 import { DiDatabase } from "react-icons/di"; // Icono genérico para SQL si prefieres
 

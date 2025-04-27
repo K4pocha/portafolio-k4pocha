@@ -15,11 +15,11 @@ const backdropVariants = {
   visible: { opacity: 1 },
 };
 
-const modalVariants = {
-  hidden: { opacity: 0, scale: 0.9, y: 20 },
-  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } },
-  exit: { opacity: 0, scale: 0.95, y: -20, transition: { duration: 0.2, ease: 'easeIn' } },
-};
+// const modalVariants = {
+ // hidden: { opacity: 0, scale: 0.9, y: 20 },
+ // visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } },
+ // exit: { opacity: 0, scale: 0.95, y: -20, transition: { duration: 0.2, ease: 'easeIn' } },
+//};
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
