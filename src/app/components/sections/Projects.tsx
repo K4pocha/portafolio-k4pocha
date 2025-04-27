@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectModal from '@/app/components/ProjectModal';
-import type { ProjectType } from '@/app/types'; // Asegúrate que la ruta sea correcta
+import type { ProjectType } from '@/app/types'; 
 import { FolderGit2 } from 'lucide-react'; // Icono para proyectos
 
 // Variantes (pueden ser las mismas que en Skills o ajustadas)
@@ -19,27 +19,24 @@ const itemVariants = {
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
 
-  // COMBINA tus proyectos existentes con los nuevos
   const projectsData: ProjectType[] = [
-    // --- Tus proyectos existentes ---
     {
       id: 1,
       name: "Portafolio Personal v1",
       shortDescription: "Mi sitio web de portafolio actual construido con Next.js.",
       longDescription: "El portafolio que estás viendo ahora mismo. Desarrollado con Next.js, TypeScript, Tailwind CSS y Framer Motion para mostrar mis proyectos y habilidades de forma limpia y responsiva, incluyendo modo claro/oscuro.",
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-      imageUrl: "/images/placeholder-project.png", // CAMBIAR RUTA
-      repoUrl: "https://github.com/K4pocha/portafolio-k4pocha", // Tu repo!
+      imageUrl: "placeholder-portfolio.png", 
+      repoUrl: "https://github.com/K4pocha/portafolio-k4pocha", 
     },
     // --- NUEVO: FoxDiscordBot ---
     {
-      id: 2, // Asegúrate que los IDs sean únicos
+      id: 2, 
       name: "FoxDiscordBot",
       shortDescription: "Bot multipropósito para Discord con funciones de moderación, música y utilidades.",
-      longDescription: "Un bot de Discord desarrollado en Python usando la librería discord.py. Incluye comandos para moderación de usuarios, reproducción de música desde YouTube y otras fuentes, obtención de información útil (clima, definiciones), y funcionalidades personalizadas. Enfocado en ser modular y fácil de extender.",
-      // Asumo Python y discord.py, añade otras que usaste (ej: APIs externas, DBs)
-      technologies: ["Python", "discord.py", "API REST", "Heroku/VPS"], // Ajusta según tu stack
-      imageUrl: "/images/foxbot-placeholder.png", // CAMBIAR RUTA - Busca/crea un logo/imagen
+      longDescription: "Un bot de Discord desarrollado en Python usando la librería discord.py. Incluye comandos para moderación de usuarios, abrir tickets a soporte, ReactRole, obtención de información útil (cuenta, reglamento, status servidor), y funcionalidades personalizadas. Enfocado en ser modular y fácil de extender.",
+      technologies: ["Python", "discord.py", "API REST", "VPS"], 
+      imageUrl: "/images/foxbot-placeholder.png", 
       repoUrl: "https://github.com/K4pocha/FoxDiscordBot", // Tu repo!
       // demoUrl: "ENLACE_INVITACION_SI_EXISTE" // Opcional
     },
@@ -51,7 +48,7 @@ const Projects = () => {
       longDescription: "Durante mi formación universitaria, realicé laboratorios prácticos de ciberseguridad enfocados en la identificación y mitigación de vulnerabilidades. Utilicé herramientas como Nmap para escaneo de puertos, Wireshark para análisis de tráfico y Metasploit (en entornos éticos controlados) para simular ataques. Documenté los hallazgos, evalué los riesgos y propuse soluciones y configuraciones seguras para redes y sistemas simulados.",
       // Lista herramientas y conceptos clave
       technologies: ["Pentesting Ético", "Nmap", "Wireshark", "Metasploit", "Análisis de Redes", "Documentación Técnica", "Kali Linux"],
-      imageUrl: "/images/cybersec-placeholder.png", // CAMBIAR RUTA - Busca/crea una imagen representativa
+      imageUrl: "cybersec-placeholder.png",
       // repoUrl: "ENLACE_A_INFORME_O_PRESENTACION" // Si tienes algún informe público
       // demoUrl: Podrías enlazar a un informe o post si lo tienes
     },
@@ -61,12 +58,10 @@ const Projects = () => {
         name: "Bot Validación Matrícula (Discord)",
         shortDescription: "Bot para validar matrícula de estudiantes y asignar roles en Discord.",
         longDescription: "Desarrollé un bot de Discord para automatizar el proceso de verificación de estudiantes matriculados en la carrera. El bot procesa archivos JSON y/o XLSX con los datos de los alumnos válidos y, mediante comandos o un proceso de bienvenida, verifica la identidad del usuario de Discord contra estos registros. Una vez validado, asigna automáticamente los roles correspondientes dentro del servidor, otorgando acceso a canales privados y privilegios específicos.",
-        // Asumo Python, añade las librerías que usaste para leer archivos
         technologies: ["Python", "discord.py", "JSON", "openpyxl/pandas", "Gestión de Roles Discord"],
-        imageUrl: "/images/discord-validation-placeholder.png", // CAMBIAR RUTA
+        imageUrl: "discord-validation-placeholder.png", 
         // repoUrl: "ENLACE_A_GITHUB_SI_ES_PUBLICO"
     },
-    // ... puedes añadir más si decides incluir otros proyectos ...
   ];
 
   const openModal = (project: ProjectType) => { setSelectedProject(project); document.body.style.overflow = 'hidden'; };
