@@ -71,7 +71,7 @@ const Projects = () => {
       technologies: [
           "FiveM",
           "Lua", 
-          "SQL/MySQL/MariaDB",
+          "HeidiSQL", // Base de datos
           "HTML/CSS/JS", // Modificaciones de UI scripts
           "API REST",
           "Windows Server", // (Windows)
