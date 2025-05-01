@@ -33,7 +33,7 @@ const Projects = () => {
     // ---  FoxDiscordBot ---
     {
       id: 2, 
-      name: "FoxDiscordBot",
+      name: "Bot Discord FoxRP",
       shortDescription: "Bot multipropósito para Discord con funciones de moderación, música y utilidades.",
       longDescription: "Un bot de Discord desarrollado en Python usando la librería discord.py. Incluye comandos para moderación de usuarios, abrir tickets a soporte, ReactRole, obtención de información útil (cuenta, reglamento, status servidor), y funcionalidades personalizadas. Enfocado en ser modular y fácil de extender.",
       technologies: ["Python", "discord.py", "API REST", "VPS"], 
