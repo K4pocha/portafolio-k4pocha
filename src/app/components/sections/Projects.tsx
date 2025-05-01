@@ -20,6 +20,7 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
 
   const projectsData: ProjectType[] = [
+    // --- Portafolio Personal ---
     {
       id: 1,
       name: "Portafolio Personal v1",
@@ -29,7 +30,7 @@ const Projects = () => {
       imageUrl: "placeholder-portfolio.png", 
       repoUrl: "https://github.com/K4pocha/portafolio-k4pocha", 
     },
-    // --- NUEVO: FoxDiscordBot ---
+    // ---  FoxDiscordBot ---
     {
       id: 2, 
       name: "FoxDiscordBot",
@@ -40,7 +41,7 @@ const Projects = () => {
       repoUrl: "https://github.com/K4pocha/FoxDiscordBot", // Tu repo!
       // demoUrl: "ENLACE_INVITACION_SI_EXISTE" // Opcional
     },
-    // --- NUEVO: Laboratorios de Ciberseguridad ---
+    // --- Laboratorios de Ciberseguridad ---
      {
       id: 3,
       name: "Análisis de Vulnerabilidades (Labs U.)",
@@ -49,10 +50,9 @@ const Projects = () => {
       // Lista herramientas y conceptos clave
       technologies: ["Pentesting Ético", "Nmap", "Wireshark", "Metasploit", "Análisis de Redes", "Documentación Técnica", "Kali Linux"],
       imageUrl: "cybersec-placeholder.png",
-      // repoUrl: "ENLACE_A_INFORME_O_PRESENTACION" // Si tienes algún informe público
-      // demoUrl: Podrías enlazar a un informe o post si lo tienes
+
     },
-    // --- NUEVO: Bot Validación Matrícula ---
+    // --- Bot Validación Matrícula ---
     {
         id: 4,
         name: "Bot Validación Matrícula (Discord)",
@@ -60,7 +60,27 @@ const Projects = () => {
         longDescription: "Desarrollé un bot de Discord para automatizar el proceso de verificación de estudiantes matriculados en la carrera. El bot procesa archivos JSON y/o XLSX con los datos de los alumnos válidos y, mediante comandos o un proceso de bienvenida, verifica la identidad del usuario de Discord contra estos registros. Una vez validado, asigna automáticamente los roles correspondientes dentro del servidor, otorgando acceso a canales privados y privilegios específicos.",
         technologies: ["Python", "discord.py", "JSON", "openpyxl/pandas", "Gestión de Roles Discord"],
         imageUrl: "discord-validation-placeholder.png", 
-        // repoUrl: "ENLACE_A_GITHUB_SI_ES_PUBLICO"
+    },
+    // --- Servidor Roleplay GTA V ---
+    {
+      id: 5, 
+      name: "Servidor Roleplay GTA V FoxRP", 
+      shortDescription: "Administración y desarrollo de servidor FiveM Roleplay con scripts y sistemas personalizados.", 
+      longDescription: `Gestión integral y desarrollo de funcionalidades para un servidor de Roleplay en FiveM basado en GTA V. Mis responsabilidades incluyeron la configuración inicial del servidor en un VPS, la instalación y adaptación del framework (ESX), el desarrollo de scripts personalizados en Lua para sistemas específicos como economía y trabajos, la optimización de recursos para mejorar el rendimiento, la administración de la base de datos (HeidiSQL) para datos de jugadores y vehículos, y la gestión/moderación de la comunidad. El objetivo era crear una experiencia de roleplay seria e inmersiva para 100+ jugadores concurrentes. Se implementaron medidas de seguridad para evitar los ataques DDoS y se realiza mantenimiento continuo.`, 
+      // Lista las tecnologías/habilidades relevantes
+      technologies: [
+          "FiveM",
+          "Lua", 
+          "SQL/MySQL/MariaDB",
+          "HTML/CSS/JS", // Modificaciones de UI scripts
+          "API REST",
+          "Windows Server", // (Windows)
+          "VPS/Hosting Dedicado",
+          "Gestión de Comunidades",
+          "Framework ESX", 
+          "Git" 
+        ],
+      imageUrl: "fivem-server-placeholder.png",
     },
   ];
 
