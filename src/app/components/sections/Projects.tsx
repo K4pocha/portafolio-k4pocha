@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectModal from '@/app/components/ProjectModal';
-import { FolderGit2, LayoutDashboard } from 'lucide-react'; // <--- agrega LayoutDashboard
-import Link from 'next/link';
+import { FolderGit2 } from 'lucide-react'; // <--- agrega LayoutDashboard
+// import Link from 'next/link';
 
 // Define el tipo según tu JSON
 type ProjectType = {
