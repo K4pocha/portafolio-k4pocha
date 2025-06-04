@@ -5,18 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ProjectModal from '@/app/components/ProjectModal';
 import { FolderGit2 } from 'lucide-react'; // <--- agrega LayoutDashboard
 // import Link from 'next/link';
-
-// Define el tipo según tu JSON
-type ProjectType = {
-  id: number;
-  name: string;
-  shortDescription: string;
-  longDescription: string;
-  technologies: string[];
-  imageUrl: string;
-  repoUrl?: string;
-  isDashboardLink?: boolean; // <-- Agrega esta línea
-};
+import type { ProjectType } from '@/app/types';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -39,9 +28,9 @@ const Projects = () => {
         const res = await fetch('/api/projects');
         const data = await res.json();
         // Si tu modal espera longDescription, mapea aquí:
-        const mapped = data.map((p: any) => ({
+        const mapped = data.map((p: ProjectType) => ({
           ...p,
-          description: p.longDescription // para compatibilidad con el modal
+          description: p.longDescription
         }));
         setProjects(mapped);
       } catch (e) {
@@ -82,7 +71,6 @@ const Projects = () => {
         viewport={{ once: true, amount: 0.1 }}
       >
         {projects.map((project) => {
-          console.log(project.name, project.isDashboardLink); // <-- Agrega esto aquí
           return (
             <motion.div
               key={project.id}
@@ -90,7 +78,7 @@ const Projects = () => {
               variants={itemVariants}
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              onClick={() => openModal(project)}
+              onClick={event => { event.stopPropagation(); openModal(project); }}
               layoutId={`card-container-${project.id}`}
             >
               <motion.img
