@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Portafolio Personal v1",
+    "shortDescription": "Mi sitio web de portafolio actual construido con Next.js.",
+    "longDescription": "El portafolio que estás viendo ahora mismo. Desarrollado con Next.js, TypeScript, Tailwind CSS y Framer Motion para mostrar mis proyectos y habilidades de forma limpia y responsiva, incluyendo modo claro/oscuro. Utilicé Gemini AI para generar descripciones de proyectos y mejorar la experiencia del usuario. Este sitio es un ejemplo de mis habilidades en desarrollo web moderno y diseño UI/UX.",
+    "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Gemini AI", "Git", "Vercel"],
+    "imageUrl": "/images/placeholder-portfolio.png",
+    "repoUrl": "https://github.com/K4pocha/portafolio-k4pocha",
+    "isDashboardLink": false
+  },
+  {
+    "id": 2,
+    "name": "Bot Discord FoxRP",
+    "shortDescription": "Bot multipropósito para Discord con funciones de moderación, música y utilidades.",
+    "longDescription": "Un bot de Discord desarrollado en Python usando la librería discord.py. Incluye comandos para moderación de usuarios, abrir tickets a soporte, ReactRole, obtención de información útil (cuenta, reglamento, status servidor), y funcionalidades personalizadas. Enfocado en ser modular y fácil de extender.",
+    "technologies": ["Python", "discord.py", "API REST", "VPS", "Git"],
+    "imageUrl": "/images/foxbot-placeholder.png",
+    "isDashboardLink": false
+  },
+  {
+    "id": 3,
+    "name": "Análisis de Vulnerabilidades (Labs U.)",
+    "shortDescription": "Documentación de escaneo y análisis de vulnerabilidades en entornos controlados.",
+    "longDescription": "Durante mi formación universitaria, realicé laboratorios prácticos de ciberseguridad enfocados en la identificación y mitigación de vulnerabilidades. Utilicé herramientas como Nmap para escaneo de puertos, Wireshark para análisis de tráfico y Metasploit (en entornos éticos controlados) para simular ataques. Documenté los hallazgos, evalué los riesgos y propuse soluciones y configuraciones seguras para redes y sistemas simulados.",
+    "technologies": ["Pentesting Ético", "Nmap", "Wireshark", "Metasploit", "Análisis de Redes", "Documentación Técnica", "Kali Linux", "Seguridad Informática", "Vulnerabilidades Comunes"],
+    "imageUrl": "/images/cybersec-placeholder.png",
+    "isDashboardLink": false
+  },
+  {
+    "id": 4,
+    "name": "Bot Validación Matrícula (Discord)",
+    "shortDescription": "Bot para validar matrícula de estudiantes y asignar roles en Discord.",
+    "longDescription": "Desarrollé un bot de Discord para automatizar el proceso de verificación de estudiantes matriculados en la carrera. El bot procesa archivos JSON y/o XLSX con los datos de los alumnos válidos y, mediante comandos o un proceso de bienvenida, verifica la identidad del usuario de Discord contra estos registros. Una vez validado, asigna automáticamente los roles correspondientes dentro del servidor, otorgando acceso a canales privados y privilegios específicos.",
+    "technologies": ["Python", "discord.py", "JSON", "openpyxl/pandas", "Gestión de Roles Discord", "API REST", "Git"],
+    "imageUrl": "/images/discord-validation-placeholder.png",
+    "isDashboardLink": false
+  },
+  {
+    "id": 5,
+    "name": "Servidor Roleplay GTA V FoxRP",
+    "shortDescription": "Administración y desarrollo de servidor FiveM Roleplay con scripts y sistemas personalizados.",
+    "longDescription": "Gestión integral y desarrollo de funcionalidades para un servidor de Roleplay en FiveM basado en GTA V. Mis responsabilidades incluyeron la configuración inicial del servidor en un VPS, la instalación y adaptación del framework (ESX), el desarrollo de scripts personalizados en Lua para sistemas específicos como economía y trabajos, la optimización de recursos para mejorar el rendimiento, la administración de la base de datos (HeidiSQL) para datos de jugadores y vehículos, y la gestión/moderación de la comunidad. El objetivo era crear una experiencia de roleplay seria e inmersiva para 100+ jugadores concurrentes. Se implementaron medidas de seguridad para evitar los ataques DDoS y se realiza mantenimiento continuo.",
+    "technologies": ["FiveM", "Lua", "HeidiSQL", "HTML/CSS/JS", "API REST", "Windows Server", "VPS/Hosting Dedicado", "Gestión de Comunidades", "Framework ESX", "Git"],
+    "imageUrl": "/images/fivem-server-placeholder.png",
+    "isDashboardLink": false
+  },
+  {
+    "id": 6,
+    "name": "Dashboard Interactivo (Demo)",
+    "shortDescription": "Demostración de un dashboard de análisis de datos construido con React y Recharts.",
+    "longDescription": "Un dashboard interactivo que visualiza datos de ventas ficticios utilizando varios tipos de gráficos (líneas, barras, torta) y KPIs. Desarrollado con Next.js, React, TypeScript, Tailwind CSS y la librería Recharts para demostrar habilidades en la creación de interfaces de usuario dinámicas y visualización de datos. Incluye procesamiento de datos y presentación responsiva.",
+    "technologies": ["Next.js", "React", "TypeScript", "Recharts", "Tailwind CSS", "Mock Data"],
+    "imageUrl": "/images/dashboard.png",
+    "isDashboardLink": true,
+    "demoUrl": "/dashboard"
+  }
+]

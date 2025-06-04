@@ -1,0 +1,13 @@
+[
+  { "id": "1", "month": "Enero", "category": "Electrónica", "region": "Norte", "unitsSold": 150, "revenue": 15000 },
+  { "id": "2", "month": "Enero", "category": "Hogar", "region": "Sur", "unitsSold": 120, "revenue": 6000 },
+  { "id": "3", "month": "Febrero", "category": "Electrónica", "region": "Norte", "unitsSold": 170, "revenue": 17500 },
+  { "id": "4", "month": "Febrero", "category": "Ropa", "region": "Centro", "unitsSold": 200, "revenue": 8000 },
+  { "id": "5", "month": "Marzo", "category": "Electrónica", "region": "Sur", "unitsSold": 130, "revenue": 14000 },
+  { "id": "6", "month": "Marzo", "category": "Hogar", "region": "Norte", "unitsSold": 160, "revenue": 8200 },
+  { "id": "7", "month": "Marzo", "category": "Ropa", "region": "Centro", "unitsSold": 220, "revenue": 9500 },
+  { "id": "8", "month": "Abril", "category": "Electrónica", "region": "Norte", "unitsSold": 180, "revenue": 18500 },
+  { "id": "9", "month": "Abril", "category": "Hogar", "region": "Sur", "unitsSold": 110, "revenue": 5500 },
+  { "id": "10", "month": "Mayo", "category": "Ropa", "region": "Norte", "unitsSold": 250, "revenue": 10000 },
+  { "id": "11", "month": "Mayo", "category": "Electrónica", "region": "Centro", "unitsSold": 160, "revenue": 16500 }
+]

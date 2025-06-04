@@ -17,19 +17,19 @@ interface ThemeProviderProps {
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   // PASO 1: Inicializa SIEMPRE con un valor por defecto ('light') que coincida con el servidor.
-  //         No intentes leer localStorage aquí directamente para el estado inicial.
+  //         No intentar leer localStorage aquí directamente para el estado inicial.
   const [theme, setTheme] = useState<Theme>('light');
   const [isMounted, setIsMounted] = useState(false); // Estado para saber si ya estamos en el cliente
 
   // Efecto para manejar el tema DESPUÉS del montaje inicial
   useEffect(() => {
-    setIsMounted(true); // Marcamos que ya estamos en el cliente
+    setIsMounted(true); // Ya estamos en el cliente
 
     // Leemos el tema guardado SÓLO en el cliente
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    // Establecemos el tema inicial desde localStorage o preferencia del sistema
+    // Tema inicial desde localStorage o preferencia del sistema
     if (savedTheme) {
       setTheme(savedTheme);
     } else if (prefersDark) {
