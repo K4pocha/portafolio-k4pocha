@@ -28,7 +28,7 @@ const About = () => {
           transition={{ delay: 0.2, duration: 0.5 }} // Retraso leve
         >
           <Image
-            src="/avatar.png" // Tu ruta real aquí
+            src="/images/avatar.png" // Tu ruta real aquí
             alt="Foto o Avatar de Nicolás Oñate"
             width={300}
             height={300}
