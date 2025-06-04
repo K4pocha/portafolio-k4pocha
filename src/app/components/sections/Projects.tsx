@@ -33,7 +33,7 @@ const Projects = () => {
           description: p.longDescription
         }));
         setProjects(mapped);
-      } catch (e) {
+      } catch {
         setProjects([]);
       } finally {
         setIsLoading(false);
