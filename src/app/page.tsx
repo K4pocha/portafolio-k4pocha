@@ -19,15 +19,16 @@ export const metadata: Metadata = {
 
 // Función para obtener los proyectos desde el archivo JSON (Server Side)
 async function getProjects(): Promise<ProjectType[]> {
-  // Ajusta la ruta si tu archivo está en otro lado, pero por estándar suele ir en public/data
   const filePath = path.join(process.cwd(), 'public', 'data', 'ownProjects.json');
   try {
     const fileContents = await fs.readFile(filePath, 'utf8');
-    const data = JSON.parse(fileContents);
-    return data.map((p: any) => ({
+    
+    // CORRECCIÓN: Tipamos data aquí mismo
+    const data: ProjectType[] = JSON.parse(fileContents);
+    
+    return data.map((p) => ({
         ...p,
-        // Aseguramos que tenga descripción aunque venga con otro nombre
-        description: p.longDescription || p.description 
+        description: p.longDescription 
     }));
   } catch (error) {
     console.error("Nota: No se encontró ownProjects.json o hubo un error, se mostrará lista vacía.", error);

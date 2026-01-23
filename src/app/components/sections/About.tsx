@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, ShieldCheck, Code, Cpu, Activity } from 'lucide-react';
+import { Terminal, ShieldCheck, Code, Cpu } from 'lucide-react';
 import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
 
