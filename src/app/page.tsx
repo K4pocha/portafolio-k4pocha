@@ -1,25 +1,59 @@
-import Hero from "@/app/components/sections/Hero"; // Usando el alias @ que configuramos
+import { promises as fs } from 'fs';
+import path from 'path';
+import type { Metadata } from 'next';
+
+// Importamos todos los componentes
+import Navbar from "@/app/components/Navbar";
+import Footer from "@/app/components/Footer";
+import Hero from "@/app/components/sections/Hero";
 import About from "@/app/components/sections/About";
 import Projects from "@/app/components/sections/Projects";
 import Skills from "@/app/components/sections/Skills";
 import Contact from "@/app/components/sections/Contact";
-// Importa el ThemeToggle que crearemos en el siguiente paso
-import ThemeToggle from "@/app/components/ThemeToggle";
+import { ProjectType } from './types';
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: 'Nicolás Oñate - Desarrollador Fullstack | Portafolio',
+  description: 'Portafolio de Nicolás Oñate, desarrollador web Fullstack experto en React, Node.js y Next.js. Explora mis proyectos.',
+};
+
+// Función para obtener los proyectos desde el archivo JSON (Server Side)
+async function getProjects(): Promise<ProjectType[]> {
+  // Ajusta la ruta si tu archivo está en otro lado, pero por estándar suele ir en public/data
+  const filePath = path.join(process.cwd(), 'public', 'data', 'ownProjects.json');
+  try {
+    const fileContents = await fs.readFile(filePath, 'utf8');
+    const data = JSON.parse(fileContents);
+    return data.map((p: any) => ({
+        ...p,
+        // Aseguramos que tenga descripción aunque venga con otro nombre
+        description: p.longDescription || p.description 
+    }));
+  } catch (error) {
+    console.error("Nota: No se encontró ownProjects.json o hubo un error, se mostrará lista vacía.", error);
+    return [];
+  }
+}
+
+export default async function Home() {
+  // 1. Cargamos los datos en el servidor
+  const projectsData = await getProjects();
+
   return (
-    // Quitamos flex y justify-center de main si las secciones ocupan todo el ancho
-    <main className="font-sans bg-background text-foreground">
-       {/* Colocamos el ThemeToggle en una esquina fija (ejemplo) */}
-       <div className="fixed top-4 right-4 z-50">
-         <ThemeToggle />
-       </div>
+    // 2. Renderizamos la estructura principal
+    <main className="font-sans bg-background text-foreground relative">
+      <Navbar />
+      
       <Hero />
       <About />
-      <Projects />
+      
+      {/* Pasamos los datos cargados al componente cliente */}
+      <Projects initialProjects={projectsData} />
+      
       <Skills />
       <Contact />
-      {/* Aquí podría ir un Footer más adelante */}
+      
+      <Footer />
     </main>
   );
 }

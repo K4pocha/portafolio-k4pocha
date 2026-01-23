@@ -1,28 +1,24 @@
 @import "tailwindcss";
 
-
-
+/* Definición de variables CSS */
 :root {
-  /* Modo Claro (Light) - por defecto */
-  --background: 0 0% 100%; /* Blanco */
-  --foreground: 0 0% 10%;  /* Casi negro */
-  --primary: 210 40% 50%; /* Un azul ejemplo */
-  /* ... otros colores claros */
+  /* Modo Claro (Light) */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 10%;
+  --primary: 210 40% 50%;
 }
 
+/* Selector estándar para modo oscuro */
+/* Funciona cuando la clase 'dark' está en el tag <html> */
 .dark {
-  /* Modo Oscuro (Dark) - cuando la clase .dark está en <html> */
-  --background: 222 47% 11%; /* Azul muy oscuro */
-  --foreground: 0 0% 95%;   /* Casi blanco */
-  --primary: 210 40% 70%;  /* Azul más claro para contraste */
-  /* ... otros colores oscuros */
+  --background: 222 47% 11%;
+  --foreground: 0 0% 95%;
+  --primary: 210 40% 70%;
 }
 
-/* Aplicar colores base al cuerpo */
+/* Aplicación de estilos base */
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-/* Asegúrate de que NO haya una '}' extra aquí al final */

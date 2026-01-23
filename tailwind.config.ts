@@ -6,17 +6,14 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class", // Cambia a 'media' si prefieres el modo oscuro automático según la configuración del sistema
+  darkMode: "class", 
   theme: {
     extend: {
-      colors: {
-        // Ejemplo: define colores semánticos
-        background: 'hsl(var(--background))', // Usaremos variables CSS HSL
-        foreground: 'hsl(var(--foreground))',
-        primary: 'hsl(var(--primary))',
-        // ... otros colores que necesites (accent, card, etc.)
+colors: {
+        background: 'hsl(var(--background) / <alpha-value>)',
+        foreground: 'hsl(var(--foreground) / <alpha-value>)',
+        primary: 'hsl(var(--primary) / <alpha-value>)',
       },
-      // Añade esta sección para las fuentes
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"], // Fuente por defecto
         mono: ["var(--font-fira-code)", "monospace"], // Fuente monoespaciada

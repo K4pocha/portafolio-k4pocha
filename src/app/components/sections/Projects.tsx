@@ -1,53 +1,31 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectModal from '@/app/components/ProjectModal';
-import { FolderGit2 } from 'lucide-react'; // <--- agrega LayoutDashboard
-// import Link from 'next/link';
+import { FolderGit2 } from 'lucide-react';
 import type { ProjectType } from '@/app/types';
+
+// Definimos las props que recibirá el componente
+interface ProjectsProps {
+  initialProjects: ProjectType[];
+}
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
 };
+
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" }},
 };
 
-const Projects = () => {
-  const [projects, setProjects] = useState<ProjectType[]>([]);
+const Projects = ({ initialProjects }: ProjectsProps) => {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      setIsLoading(true);
-      try {
-        const res = await fetch('/api/projects');
-        const data = await res.json();
-        // Si tu modal espera longDescription, mapea aquí:
-        const mapped = data.map((p: ProjectType) => ({
-          ...p,
-          description: p.longDescription
-        }));
-        setProjects(mapped);
-      } catch {
-        setProjects([]);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchProjects();
-  }, []);
 
   const openModal = (project: ProjectType) => { setSelectedProject(project); document.body.style.overflow = 'hidden'; };
   const closeModal = () => { setSelectedProject(null); document.body.style.overflow = 'auto'; };
-
-  if (isLoading) {
-    return <div className="min-h-screen flex items-center justify-center">Cargando proyectos...</div>;
-  }
 
   return (
     <motion.section
@@ -70,7 +48,7 @@ const Projects = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
       >
-        {projects.map((project) => {
+        {initialProjects.map((project) => {
           return (
             <motion.div
               key={project.id}
@@ -81,8 +59,9 @@ const Projects = () => {
               onClick={event => { event.stopPropagation(); openModal(project); }}
               layoutId={`card-container-${project.id}`}
             >
+              {/* Manejo seguro de la imagen */}
               <motion.img
-                src={project.imageUrl.replace('@/public/', '/')} // Corrige la ruta si es necesario
+                src={project.imageUrl ? project.imageUrl.replace('@/public/', '/') : '/images/placeholder.png'}
                 alt={`Imagen de ${project.name}`}
                 className="w-full h-48 object-cover"
                 layoutId={`card-image-${project.id}`}
@@ -91,14 +70,11 @@ const Projects = () => {
                 <h3 className="text-xl font-semibold font-mono mb-2">{project.name}</h3>
                 <p className="text-sm text-foreground/70 mb-4 flex-grow">{project.shortDescription}</p>
                 <div className="flex flex-wrap gap-1.5 mt-auto pt-2 border-t border-foreground/5">
-                   {project.technologies.slice(0, 3).map(tech => (
+                   {project.technologies?.slice(0, 3).map(tech => (
                        <span key={tech} className="bg-primary/10 text-primary text-[11px] font-semibold px-2 py-0.5 rounded-full font-mono">
                            {tech}
                        </span>
                    ))}
-                   {project.technologies.length > 3 && (
-                      <span className="text-[11px] text-foreground/50">...</span>
-                   )}
                 </div>
               </div>
             </motion.div>
