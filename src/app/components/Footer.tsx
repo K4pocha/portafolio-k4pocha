@@ -8,14 +8,12 @@ const Footer = () => {
   
   return (
     <footer className="py-8 border-t-2 border-primary/30 bg-background/80 backdrop-blur-sm relative overflow-hidden">
-      {/* Líneas decorativas de fondo */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Contenido principal */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           
           {/* Sección izquierda - Logo */}
@@ -46,7 +44,6 @@ const Footer = () => {
             </p>
           </motion.div>
 
-          {/* Sección derecha - Tech stack */}
           <motion.div 
             className="flex items-center justify-end text-right"
             initial={{ opacity: 0, x: 20 }}
@@ -61,7 +58,6 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* Línea divisoria animada */}
         <motion.div 
           className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent mb-4"
           initial={{ scaleX: 0 }}
@@ -69,7 +65,6 @@ const Footer = () => {
           transition={{ duration: 1, delay: 0.3 }}
         />
 
-        {/* Footer minimal */}
         <motion.div 
           className="text-center text-xs md:text-sm text-foreground/50 font-mono"
           initial={{ opacity: 0 }}
