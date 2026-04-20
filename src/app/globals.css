@@ -1,24 +1,221 @@
 @import "tailwindcss";
 
-/* Definición de variables CSS */
+/* Definición de variables CSS - CYBERPUNK THEME */
 :root {
-  /* Modo Claro (Light) */
+  /* Modo Claro (Light) - Forzar dark mode */
   --background: 0 0% 100%;
   --foreground: 0 0% 10%;
-  --primary: 210 40% 50%;
+  --primary: 270 100% 50%; /* Púrpura neón */
+  --secondary: 180 100% 50%; /* Cian neón */
+  --accent: 0 100% 50%; /* Rojo neón para accents */
 }
 
-/* Selector estándar para modo oscuro */
-/* Funciona cuando la clase 'dark' está en el tag <html> */
+/* Selector estándar para modo oscuro - CYBERPUNK */
 .dark {
-  --background: 222 47% 11%;
-  --foreground: 0 0% 95%;
-  --primary: 210 40% 70%;
+  --background: 260 30% 5%; /* Negro profundo con matiz púrpura */
+  --foreground: 180 100% 90%; /* Cian claro */
+  --primary: 270 100% 50%; /* Púrpura neón brillante */
+  --secondary: 180 100% 50%; /* Cian neón brillante */
+  --accent: 0 100% 50%; /* Rojo neón */
+  --glow-primary: 270 100% 50%;
+  --glow-secondary: 180 100% 50%;
 }
 
 /* Aplicación de estilos base */
+html {
+  color-scheme: dark;
+}
+
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Efecto de Scanlines (líneas CRT) */
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03),
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Glitch Effect - Texto */
+@keyframes glitch {
+  0% {
+    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+  }
+  14% {
+    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+  }
+  15% {
+    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+  }
+  49% {
+    text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+  }
+  50% {
+    text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+  }
+  100% {
+    text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+  }
+}
+
+@keyframes glitch-2 {
+  0% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+  }
+  20% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 0% 15%);
+  }
+  40% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  60% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 0% 65%);
+  }
+  80% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 0% 45%);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+  }
+}
+
+/* Neon Glow Effect */
+@keyframes neon-glow {
+  0%, 100% {
+    text-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 3px currentColor;
+  }
+}
+
+@keyframes neon-glow-box {
+  0%, 100% {
+    box-shadow: 0 0 5px currentColor, inset 0 0 3px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 3px currentColor, inset 0 0 1px currentColor;
+  }
+}
+
+/* Clases de utilidad para cyberpunk */
+.glitch {
+  animation: glitch 2s infinite;
+  position: relative;
+}
+
+.glitch-2::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  top: 0;
+  width: 100%;
+  background: hsl(var(--background));
+  color: #ff00ff;
+  animation: glitch-2 2.3s infinite;
+}
+
+.glitch-2::after {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 100%;
+  background: hsl(var(--background));
+  color: #00ffff;
+  animation: glitch-2 2s infinite -0.1s;
+}
+
+.neon-text {
+  color: hsl(var(--primary));
+  text-shadow: 0 0 5px hsl(var(--primary));
+  animation: neon-glow 2s ease-in-out infinite;
+}
+
+.neon-text-cyan {
+  color: hsl(var(--secondary));
+  text-shadow: 0 0 5px hsl(var(--secondary));
+  animation: neon-glow 2s ease-in-out infinite;
+}
+
+.neon-border {
+  border-color: hsl(var(--primary));
+  border-width: 2px;
+  box-shadow: 0 0 10px hsl(var(--primary)), inset 0 0 10px hsl(var(--primary)) 0.1;
+  animation: neon-glow-box 2s ease-in-out infinite;
+}
+
+.neon-border-cyan {
+  border-color: hsl(var(--secondary));
+  border-width: 2px;
+  box-shadow: 0 0 10px hsl(var(--secondary)), inset 0 0 10px hsl(var(--secondary)) 0.1;
+  animation: neon-glow-box 2s ease-in-out infinite;
+}
+
+/* CRT Distortion Effect */
+@keyframes crt-distort {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  20% {
+    transform: scaleY(0.98);
+  }
+  40% {
+    transform: scaleY(1.02);
+  }
+  60% {
+    transform: scaleY(0.99);
+  }
+  80% {
+    transform: scaleY(1.01);
+  }
+}
+
+.crt-distort {
+  animation: crt-distort 0.5s infinite;
+}
+
+/* Cyber Grid Background */
+.cyber-grid {
+  background-image: 
+    linear-gradient(0deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection estilo cyberpunk */
+::selection {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--background));
 }
