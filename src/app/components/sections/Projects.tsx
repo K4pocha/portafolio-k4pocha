@@ -22,7 +22,7 @@ const itemVariants = {
 
 const Projects = ({ initialProjects }: ProjectsProps) => {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const openModal = (project: ProjectType) => { setSelectedProject(project); document.body.style.overflow = 'hidden'; };
   const closeModal = () => { setSelectedProject(null); document.body.style.overflow = 'auto'; };
